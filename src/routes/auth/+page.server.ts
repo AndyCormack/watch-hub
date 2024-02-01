@@ -1,11 +1,11 @@
 import type { AuthTokenResponse } from '$/types/trakt/Auth'
-import { redirect, type Actions } from '@sveltejs/kit'
+import { redirect, error, type Actions } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import { traktApi } from '$/lib/trakt'
 
 export const load = (async ({ url, cookies }) => {
   if (!url.searchParams.has('code')) {
-    throw new Error('Missing code')
+    error(401, 'Missing authorisation code')
   }
 
   const body = {

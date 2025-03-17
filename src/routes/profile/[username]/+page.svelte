@@ -1,6 +1,5 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
-  import type { PageServerData } from './$types'
 
   const { data } = $props()
 </script>

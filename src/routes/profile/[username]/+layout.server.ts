@@ -1,8 +1,7 @@
 import { headers } from '$/lib/trakt'
-import { traktApi } from '$/lib/trakt'
-import type { Profile } from '$/types/trakt/User'
+import type { ProfileExtended } from '$/types/trakt/User'
 import { error } from '@sveltejs/kit'
-import type { PageServerLoad } from './$types'
+import type { LayoutServerLoad } from './$types'
 
 const baseUrl = import.meta.env.VITE_TRAKT_API_BASE_URL
 
@@ -12,17 +11,13 @@ export const load = (async ({ cookies, params: { username } }) => {
     return {}
   }
 
-  const req = await fetch(`${baseUrl}/users/${username}`, {
+  const req = await fetch(`${baseUrl}/users/${username}?extended=vip`, {
     headers: headers(accessToken),
   })
   if (!req.ok) {
     error(404, 'User not found')
   }
 
-  const profile: Profile | null = await req.json()
+  const profile: ProfileExtended | null = await req.json()
   return { profile }
-
-  return {
-    profile: null,
-  }
-}) satisfies PageServerLoad
+}) satisfies LayoutServerLoad

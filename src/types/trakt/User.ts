@@ -9,6 +9,12 @@ export type Profile = {
   }
 }
 
+export type ProfileExtended = Profile & {
+  vip_og: boolean
+  vip_years: number
+  vip_cover_image: string
+}
+
 export type HistoryItem = {
   id: number
   watched_at: string

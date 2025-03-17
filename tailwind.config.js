@@ -16,6 +16,7 @@ export default {
         light: {
           ...themes.dracula,
           primary: '#fa5',
+          background: '#181822',
         },
       },
     ],

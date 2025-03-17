@@ -5,10 +5,10 @@
 </script>
 
 <h2
-  class="text-2xl px-8 py-4 border-b border-b-primary bg-gradient-to-t from-primary/10 via-transparent via-20%"
+  class="content-center text-center text-2xl px-8 py-4 min-h-40 border-b border-b-primary bg-gradient-to-t from-primary/10 via-transparent via-20%"
 >
   <a href="/profile/{data.profile?.ids.slug}">
-    {data.profile?.name}
+    {data.profile?.name || data.profile?.username}
   </a>
   <a
     href="//trakt.tv/users/{data.profile?.ids.slug}"

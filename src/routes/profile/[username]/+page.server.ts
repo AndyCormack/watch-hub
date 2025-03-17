@@ -15,12 +15,12 @@ export const load = (async ({ cookies, params: { username } }) => {
   const req = await fetch(`${baseUrl}/users/${username}`, {
     headers: headers(accessToken),
   })
-  try {
-    const profile: Profile | null = await req.json()
-    return { profile }
-  } catch (err) {
-    error(500, err as Error)
+  if (!req.ok) {
+    error(404, 'User not found')
   }
+
+  const profile: Profile | null = await req.json()
+  return { profile }
 
   return {
     profile: null,

@@ -19,5 +19,9 @@ export const load = (async ({ cookies, params: { username } }) => {
   }
 
   const profile: ProfileExtended | null = await req.json()
+  if (profile?.deleted) {
+    error(404, 'User not found')
+  }
+
   return { profile }
 }) satisfies LayoutServerLoad

@@ -1,6 +1,7 @@
 export type Profile = {
   username: string
   private: boolean
+  deleted: boolean
   name: string
   vip: boolean
   vip_ep: boolean

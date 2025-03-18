@@ -16,7 +16,9 @@
 
   <div class="navbar-end">
     {#if data.user?.profile?.name}
-      <a href="/profile" class="btn btn-ghost">{data.user?.profile?.name}</a>
+      <a href="/profile/{data.user.profile.ids.slug}" class="btn btn-ghost">
+        {data.user.profile.name}
+      </a>
       <form method="POST" action="/auth?/logout">
         <button class="btn btn-ghost" data-sveltekit-preload-data="tap">
           Logout

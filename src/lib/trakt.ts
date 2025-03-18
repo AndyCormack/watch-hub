@@ -1,5 +1,9 @@
-export function traktApi(strings: TemplateStringsArray) {
-  return import.meta.env.VITE_TRAKT_API_BASE_URL + strings.join('')
+export function traktApi(strings: TemplateStringsArray, ...values: any[]) {
+  let result = import.meta.env.VITE_TRAKT_API_BASE_URL
+  strings.forEach((string, i) => {
+    result += string + (values[i] || '')
+  })
+  return result
 }
 
 export function headers(accessToken: string) {

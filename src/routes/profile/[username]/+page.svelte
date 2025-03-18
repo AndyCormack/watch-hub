@@ -11,11 +11,11 @@
 >
   {#if data.coverImage}
     <div
-      class="absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent via-75%"
+      class="absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent via-90%"
     ></div>
   {/if}
 
-  <div class="isolate">
+  <div class="isolate hero-content">
     <a href="/profile/{data.profile?.ids.slug}">
       {data.profile?.name || data.profile?.username}
     </a>
@@ -50,3 +50,9 @@
     </div>
   {:else}{/if}
 </div>
+
+<style>
+  .hero-content {
+    text-shadow: 0 0 20px black;
+  }
+</style>

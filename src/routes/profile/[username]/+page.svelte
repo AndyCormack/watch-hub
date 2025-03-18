@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/state'
   import Icon from '@iconify/svelte'
 
   const { data } = $props()
@@ -18,6 +19,19 @@
     <Icon icon="mdi:open-in-new" class="text-primary inline-flex" />
   </a>
 </h2>
+
+{#if !data.profile?.private}
+  <div
+    class="flex justify-center p-1 bg-secondary/5 border-b border-b-secondary/20"
+  >
+    <a
+      class="btn btn-sm btn-ghost no-underline hover:bg-secondary/50"
+      href="{page.url.pathname}/history"
+    >
+      History
+    </a>
+  </div>
+{/if}
 
 <div class="flex flex-col gap-4 p-4 justify-center">
   {#if data.profile?.private}

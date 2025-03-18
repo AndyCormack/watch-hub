@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
-  import type { PageServerData } from './$types'
-  export let data: PageServerData
+
+  const { data } = $props()
 
   function formatDate(date: string) {
     return new Date(date).toLocaleDateString('en-GB', {

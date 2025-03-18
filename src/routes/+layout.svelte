@@ -1,10 +1,9 @@
 <script lang="ts">
   import '../app.css'
-  import type { LayoutData } from './$types'
 
   const login = `https://api.trakt.tv/oauth/authorize?response_type=code&client_id=${import.meta.env.VITE_TRAKT_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_TRAKT_REDIRECT_URI}`
 
-  export let data: LayoutData
+  const { data, children } = $props()
 </script>
 
 <header class="navbar bg-base-200 sticky top-0 bg-opacity-85 backdrop-blur">
@@ -31,7 +30,7 @@
 </header>
 
 <div class="">
-  <slot />
+  {@render children()}
 </div>
 
 <footer class="footer place-items-end p-2 bg-base-200 text-xs">

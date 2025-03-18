@@ -6,7 +6,7 @@ import type { LayoutServerLoad } from './$types'
 export const load = (async ({ cookies, params: { username } }) => {
   const accessToken = cookies.get('access_token')
   if (!accessToken) {
-    return {}
+    error(401, 'Unauthorized')
   }
 
   const req = await fetch(traktApi`/users/${username}?extended=vip`, {

@@ -39,10 +39,5 @@
       <p class="text-2xl text-primary">This profile is private</p>
       <p class="text-gray-500">You need to be friends to see this profile</p>
     </div>
-  {:else}
-    <div class="text-center">
-      <p class="text-2xl text-primary">This profile is public</p>
-      <p class="text-gray-500">You can see this profile</p>
-    </div>
-  {/if}
+  {:else}{/if}
 </div>

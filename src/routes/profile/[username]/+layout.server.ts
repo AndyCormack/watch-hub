@@ -39,14 +39,20 @@ export const load = (async ({ cookies, params: { username } }) => {
     if (exists) {
       coverImage = getUrl(dbUser.cover!.key)
     } else {
-      // const upload = await utapi.uploadFilesFromUrl(profile.vip_cover_image)
-      // if (!upload.error) {
-      //   utapi.renameFiles({
-      //     fileKey: upload.data.key,
-      //     newName: `${profile.ids.slug}/cover`,
-      //   })
-      // }
-      // TODO: Store the uploadthing key and Trakt API URL in the database
+      const upload = await utapi.uploadFilesFromUrl(profile.vip_cover_image)
+      if (!upload.error) {
+        coverImage = getUrl(upload.data.key)
+        utapi.renameFiles({
+          fileKey: upload.data.key,
+          newName: `${profile.ids.slug}/cover`,
+        })
+
+        client.mutation(api.user.setCover, {
+          slug: profile.ids.slug,
+          key: upload.data.key,
+          traktUrl: profile.vip_cover_image,
+        })
+      }
     }
   }
 

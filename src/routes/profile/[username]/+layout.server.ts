@@ -33,7 +33,6 @@ export const load = (async ({ cookies, params: { username } }) => {
       slug: profile.ids.slug,
     })
 
-    // TODO: Check if the file already exists
     const exists =
       dbUser?.cover?.key && dbUser?.cover?.traktUrl === profile.vip_cover_image
     if (exists) {

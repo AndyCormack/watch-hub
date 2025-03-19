@@ -29,7 +29,7 @@ export const load = (async ({ cookies, params: { username } }) => {
     const exists = true
     if (exists) {
       const key = 'EUDjoIb1Bmt1un973ehy7iAvrOgHUYsq1lL5CbdZSj2JcXxD'
-      coverImage = `https://${env.UPLOADTHING_APPID}.ufs.sh/f/${key}`
+      coverImage = getUrl(key)
     } else {
       // const upload = await utapi.uploadFilesFromUrl(profile.vip_cover_image)
       // if (!upload.error) {
